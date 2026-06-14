@@ -310,13 +310,25 @@
         </div>
     </header>
 
-    <!-- 滿版電影感背景區（直接引入您的宣傳影片，預設靜音、自動重複播放、無法點擊） -->
+<!-- 滿版電影感背景區（改為 MP4 檔案原生播放，預設靜音、自動重複播放、無法點擊） -->
     <section class="hero-download">
-        <iframe 
-            src="https://www.youtube.com/embed/nkjZcfN-c3A?autoplay=1&mute=1&loop=1&playlist=nkjZcfN-c3A&controls=0&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&disablekb=1" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-        </iframe>
+        <!-- 
+            autoplay: 自動播放
+            muted: 靜音（現代瀏覽器規定，一定要靜音才能自動播放）
+            loop: 無限重複播放
+            playsinline: 在手機上也能直接在網頁內播放，不會跳出全螢幕
+            pointer-events: none; (滑鼠點擊穿透，玩家完全無法點選或點右鍵)
+        -->
+        <video 
+            src="videos/download_bg.mp4" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            style="position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); pointer-events: none; object-fit: cover; z-index: 1;">
+            您的瀏覽器不支援此影片播放。
+        </video>
+        
         <div class="hero-overlay"></div>
         
         <div class="hero-title-box">
