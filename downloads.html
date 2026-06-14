@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲下載 - 《W勇ONLINE》官方網站</title>
+    <style>
+        /* --- 全局樣式：低飽和高級冷灰風格 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c0e; /* 極暗冷黑底色 */
+            color: #b2b9c4; /* 低飽和冷灰文字 */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- 頂部導覽列 --- */
+        header {
+            background: rgba(14, 16, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1f2229;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px; 
+            height: 65px; 
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 150px;
+        }
+
+        .logo-img {
+            height: 100%;    
+            width: auto;     
+            object-fit: contain;
+        }
+
+        .btn-back-main {
+            font-size: 13px;
+            color: #9ea5b1;
+            border: 1px solid #2d3139;
+            padding: 6px 16px;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .btn-back-main:hover {
+            color: #ffffff;
+            border-color: #495057;
+            background: #111317;
+        }
+
+        /* --- 視覺主體：滿版電影感動態背景 --- */
+        .hero-download {
+            position: relative;
+            width: 100%;
+            height: 45vh;
+            min-height: 350px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 65px;
+        }
+
+        /* YouTube 動態背景與裁切 */
+        .hero-download iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%) scale(1.4);
+            pointer-events: none;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* 黑色漸層遮罩：讓影片上方文字更清晰 */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(11,12,14,0.5) 0%, rgba(11,12,14,0.95) 100%);
+            z-index: 2;
+        }
+
+        /* 下載頁標題文字 */
+        .hero-title-box {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-title-box h1 {
+            font-size: 36px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-title-box p {
+            color: #79818e;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* --- 下載核心內容區 --- */
+        .download-content {
+            max-width: 1000px;
+            margin: -40px auto 0 auto; /* 往上縮，讓內容浮在影片上方，更有層次感 */
+            padding: 0 20px 8px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 下載卡片大外框 */
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .download-card {
+            background: rgba(17, 19, 24, 0.85);
+            border: 1px solid #1f2229;
+            border-radius: 6px;
+            padding: 35px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: border-color 0.3s;
+        }
+
+        .download-card:hover {
+            border-color: #3a3f4d;
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 11px;
+            padding: 3px 10px;
+            background: #20232a;
+            color: #a2aab7;
+            border-radius: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .card-badge.primary {
+            background: #2d333f;
+            color: #ffffff;
+        }
+
+        .card-title {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-meta {
+            font-size: 13px;
+            color: #565d68;
+            margin-bottom: 25px;
+        }
+
+        /* 高級感下載大按鈕 */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            background: #1f2229;
+            border: 1px solid #2d3139;
+            color: #ced4da;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background: #ffffff;
+            color: #0b0c0e;
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        /* --- 系統需求表格區 --- */
+        .specs-section {
+            background: #111318;
+            border: 1px solid #1a1d24;
+            border-radius: 6px;
+            padding: 35px;
+            margin-bottom: 60px;
+        }
+
+        .specs-title {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-left: 3px solid #3a3f4d;
+            padding-left: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            color: #949ba6;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #1a1d24;
+        }
+
+        th {
+            color: #ffffff;
+            font-weight: 600;
+            background: #15181e;
+        }
+
+        tr:hover td {
+            color: #ffffff;
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: #3e444c;
+            padding: 40px 20px;
+            border-top: 1px solid #15171c;
+        }
+
+        /* 📱 手機板 RWD 完美自適應 */
+        @media (max-width: 768px) {
+            .hero-download { height: 35vh; min-height: 250px; }
+            .hero-title-box h1 { font-size: 26px; }
+            .download-grid { grid-template-columns: 1fr; gap: 15px; }
+            .download-content { margin-top: -20px; padding: 0 15px; }
+            .download-card { padding: 25px; }
+            .specs-section { padding: 20px; }
+            table, th, td { display: block; width: 100%; }
+            th { display: none; } /* 手機板隱藏表頭 */
+            td { padding: 10px 5px; border-bottom: 1px solid #1f2229; }
+            td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: 600;
+                color: #ffffff;
+                margin-right: 20px;
+            }
+            
+            /* 手機板 LOGO 微調靠左 */
+            .logo-container {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/2E12.png" alt="W勇ONLINE" class="logo-img">
+            </a>
+            <a href="index.html" class="btn-back-main">← 返回官網首頁</a>
+        </div>
+    </header>
+
+    <!-- 滿版電影感背景區（直接引入您的宣傳影片，預設靜音、自動重複播放、無法點擊） -->
+    <section class="hero-download">
+        <iframe 
+            src="https://www.youtube.com/embed/rgj4ENNYwY4?autoplay=1&mute=1&loop=1&playlist=rgj4ENNYwY4&controls=0&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&disablekb=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-title-box">
+            <h1>遊戲下載 DOWNLOADS</h1>
+            <p>獲取《W勇ONLINE》最新客戶端，即刻開啟冒險</p>
+        </div>
+    </section>
+
+    <!-- 下載與配備主體區 -->
+    <main class="download-content">
+        
+        <!-- 下載按鈕雙欄排版 -->
+        <div class="download-grid">
+            <!-- 左卡片：完整主程式 -->
+            <div class="download-card">
+                <span class="card-badge primary">FULL CLIENT</span>
+                <h2 class="card-title">完整遊戲主程式</h2>
+                <div class="card-meta">檔案大小: 2.5 GB | 發布日期: 2026-06-12</div>
+                <!-- 請在 href 填入您真正的下載網址 (例如 Google Drive 或 Mega 連結) -->
+                <a href=" https://pse.is/974642" target="_blank" class="btn-download">
+                    📥 官方主要下載點 (Google Drive)
+                </a>
+            </div>
+
+            <!-- 右卡片：手動補丁 -->
+            <div class="download-card">
+                <span class="card-badge">MANUAL PATCH</span>
+                <h2 class="card-title">最新手動更新檔</h2>
+                <div class="card-meta">目前沒有可用的更新檔</div>
+<!-- 🎯 變更點：改用 button 並加上 disabled，同時套用獨立的灰色不可點擊樣式 -->
+    <button disabled style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 14px;
+        background: #14161a;        /* 更暗的冷灰色調 */
+        border: 1px solid #1f2229;  /* 降低邊框亮度 */
+        color: #495057;             /* 灰暗的文字顏色 */
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 4px;
+        letter-spacing: 1px;
+        cursor: not-allowed;        /* 滑鼠滑過去會變成「禁止點擊」的圖示 */
+        opacity: 0.6;               /* 增加透明度，呈現無效質感 */
+        transition: none;           /* 拔除動畫，防止 hover 變色 */
+    ">
+        🚫 暫無手動更新檔案
+    </button>
+</div>
+        </div>
+
+        <!-- 系統需求規格配備表 -->
+        <section class="specs-section">
+            <h3 class="specs-title">電腦系統需求配置</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>硬體項目</th>
+                        <th>最低配置需求</th>
+                        <th>推薦配置需求</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="硬體項目">作業系統</td>
+                        <td data-label="最低配置需求">Windows 10 / 11 (64-bit)</td>
+                        <td data-label="推薦配置需求">Windows 10 / 11 (64-bit) 最優化</td>
+                    </tr>
+                    <tr>
+                        <td data-label="硬體項目">處理器 (CPU)</td>
+                        <td data-label="最低配置需求">Intel Core i3 或 AMD 同等級處理器</td>
+                        <td data-label="推薦配置需求">Intel Core i5 / i7 或 AMD Ryzen 5 以上</td>
+                    </tr>
+                    <tr>
+                        <td data-label="硬體項目">記憶體 (RAM)</td>
+                        <td data-label="最低配置需求">8 GB RAM</td>
+                        <td data-label="推薦配置需求">16 GB RAM 或更高</td>
+                    </tr>
+                    <tr>
+                        <td data-label="硬體項目">顯示卡 (GPU)</td>
+                        <td data-label="最低配置需求">NVIDIA GTX 750 或 AMD Radeon 同等級</td>
+                        <td data-label="推薦配置需求">NVIDIA GTX 1060 / RTX 2060 以上</td>
+                    </tr>
+                    <tr>
+                        <td data-label="硬體項目">儲存空間</td>
+                        <td data-label="最低配置需求">預留 10 GB 以上可用硬碟空間</td>
+                        <td data-label="推薦配置需求">預留 20 GB 以上可用空間 (推薦 SSD 固態硬碟)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 W-YONG ONLINE. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
