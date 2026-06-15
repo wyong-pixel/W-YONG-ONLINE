@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【活動】《W勇》歡慶開服宣傳活動 — 送好禮！｜W勇Online</title>
+    <style>
+        /* --- 全局樣式：低飽和高級冷灰風格 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c0e; /* 極暗冷黑底色 */
+            color: #b2b9c4; /* 低飽和冷灰文字 */
+            line-height: 1.8;
+            padding-top: 80px; /* 預留給固定導覽列的空間 */
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- 導覽列基底 --- */
+        header {
+            background: rgba(14, 16, 20, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1f2229;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px; 
+            height: 60px; 
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 150px;
+            cursor: pointer;        
+        }
+
+        .logo-img {
+            height: 45px; /* 活動頁稍微縮小維持精緻度 */
+            width: auto;     
+            object-fit: contain;
+        }
+
+        .btn-back {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6c757d;
+            border: 1px solid #2d3139;
+            padding: 6px 16px;
+            border-radius: 4px;
+            background: rgba(20, 22, 26, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: #ffffff;
+            border-color: #4a505a;
+            background: rgba(30, 33, 40, 0.8);
+        }
+
+        /* --- 主要內容區包裝 --- */
+        .article-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 文章頭部資訊 */
+        .article-header {
+            border-bottom: 1px solid #1f2229;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .article-tag {
+            display: inline-block;
+            font-size: 12px;
+            padding: 4px 10px;
+            background: #251b1b; /* 帶點微暗紅的活動感 */
+            color: #ff8888;
+            border-radius: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .article-date {
+            font-size: 13px;
+            color: #495057;
+        }
+
+        /* 🎯 活動主視覺宣傳圖片區 */
+        .promo-image-wrapper {
+            width: 100%;
+            border: 1px solid #1f2229;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #111317;
+            margin-bottom: 35px;
+        }
+
+        .promo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* 預設帶有通透的質感濾鏡 */
+            filter: brightness(0.95) contrast(1.05);
+        }
+
+        /* 圖片載入失敗時的預留方塊 */
+        .promo-img-placeholder {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #495057;
+            font-size: 14px;
+            background: linear-gradient(45deg, #13151a, #1f232d);
+        }
+
+        /* --- 內文區塊與排版 --- */
+        .article-content {
+            font-size: 15px;
+            color: #949ba6;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            color: #ced4da;
+            margin-bottom: 35px;
+            padding-left: 15px;
+            border-left: 3px solid #4a505a;
+        }
+
+        .content-block {
+            background: #111317;
+            border: 1px solid #1f2229;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .block-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1a1d24;
+            padding-bottom: 10px;
+        }
+
+        /* 禮盒品項列表樣式 */
+        .gift-list {
+            list-style: none;
+        }
+
+        .gift-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #16181d;
+            font-size: 14px;
+        }
+
+        .gift-item:last-child { border-bottom: none; }
+
+        .gift-number {
+            font-family: monospace;
+            font-weight: 600;
+            color: #6c757d;
+            width: 30px;
+        }
+
+        .gift-name {
+            color: #ced4da;
+            flex-grow: 1;
+        }
+
+        .gift-highlight {
+            color: #ffffff;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        /* 活動步驟樣式 */
+        .step-list {
+            list-style: none;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .step-item:last-child { margin-bottom: 0; }
+
+        .step-badge {
+            width: 24px;
+            height: 24px;
+            background: #2d3139;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text h5 {
+            color: #ced4da;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* 注意事項列表樣式 */
+        .warn-list {
+            list-style: none;
+        }
+
+        .warn-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #8a93a0;
+        }
+
+        .warn-item:last-child { margin-bottom: 0; }
+
+        .warn-item::before {
+            content: "•";
+            position: absolute;
+            left: 5px;
+            color: #ff8888;
+            font-weight: bold;
+        }
+
+        /* 按鈕區塊 */
+        .link-block {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .btn-share {
+            display: inline-block;
+            padding: 14px 40px;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: #ffffff;
+            color: #0b0c0e;
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-share:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            background: #07080a;
+            border-top: 1px solid #15171c;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #3e444c;
+            margin-top: 80px;
+        }
+
+        /* 📱 手機 RWD 優化 */
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            .article-title { font-size: 22px; }
+            .content-block { padding: 18px; }
+            .promo-img-placeholder { height: 180px; }
+            .btn-share { width: 100%; padding: 14px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/2E12.png" alt="W勇 LOGO" class="logo-img">
+            </a>
+            <a href="index.html#news" class="btn-back">返回列表</a>
+        </div>
+    </header>
+
+    <main class="article-container">
+        
+        <article class="article-header">
+            <span class="article-tag">開服活動</span>
+            <h1 class="article-title">《W勇》歡慶開服宣傳活動 — 分享即送驚喜好禮！</h1>
+            <div class="article-date">發布時間：2026-06-12</div>
+        </article>
+
+        <div class="promo-image-wrapper">
+            <img src="images/promo_event.png" alt="歡慶開服宣傳活動" class="promo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="promo-img-placeholder" style="display:none;">[ 宣傳活動圖片配置區 ]</div>
+        </div>
+
+        <div class="article-content">
+            
+            <p class="intro-text">
+                🎉 親愛的玩家您好！《W勇Online》已正式熱血開服！營運團隊特別準備了豐厚的宣傳福利禮盒，只要動動手指分享，就能在起跑點上領先群雄，誠摯邀請各位勇者一同共襄盛舉！
+            </p>
+
+            <div class="content-block">
+                <h3 class="block-title">🎁 歡慶開服禮盒內容</h3>
+                <ul class="gift-list">
+                    <li class="gift-item">
+                        <span class="gift-number">01.</span>
+                        <span class="gift-name">造型服飾貼</span>
+                        <span class="gift-highlight">10D</span>
+                    </li>
+                    <li class="gift-item">
+                        <span class="gift-number">02.</span>
+                        <span class="gift-name">三回藥水</span>
+                        <span class="gift-highlight">×9999</span>
+                    </li>
+                    <li class="gift-item">
+                        <span class="gift-number">03.</span>
+                        <span class="gift-name">塔羅牌 I等 正位1 & 2禮盒</span>
+                        <span class="gift-highlight">限定</span>
+                    </li>
+                    <li class="gift-item">
+                        <span class="gift-number">04.</span>
+                        <span class="gift-name">紫晶石 & 白玉珠</span>
+                        <span class="gift-highlight">各 ×10</span>
+                    </li>
+                    <li class="gift-item">
+                        <span class="gift-number">05.</span>
+                        <span class="gift-name">遊戲幣</span>
+                        <span class="gift-highlight">100 萬</span>
+                    </li>
+                    <li class="gift-item">
+                        <span class="gift-number">06.</span>
+                        <span class="gift-name">扭蛋券</span>
+                        <span class="gift-highlight">×10</span>
+                    </li>
+                    <li class="gift-item">
+                        <span class="gift-number">07.</span>
+                        <span class="gift-name">武器技能改造卡</span>
+                        <span class="gift-highlight">3 入</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3 class="block-title">📢 活動參與方式</h3>
+                <ul class="step-list">
+                    <li class="step-item">
+                        <div class="step-badge">1</div>
+                        <div class="step-text">
+                            <h5>關注與公開分享</h5>
+                            <p>前往官方粉絲專頁進行「追蹤」，並將指定的活動文章「公開分享」至兩個勇亂相關 Facebook 社團。</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-badge">2</div>
+                        <div class="step-text">
+                            <h5>截圖回傳客服小編</h5>
+                            <p>完成分享後截圖，將截圖私訊回傳給粉絲專頁小編，並留言標註：<strong style="color: #ffffff;">「我要領取歡慶開服禮盒」</strong>。</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-badge">3</div>
+                        <div class="step-text">
+                            <h5>提供遊戲帳號</h5>
+                            <p>同時附上您的遊戲登入帳號。待營運團隊審核通過後，獎勵將直接發放至您的帳號內。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3 class="block-title">⚠️ 活動注意事項</h3>
+                <ul class="warn-list">
+                    <li class="warn-item">每位玩家（身分/IP）最多僅可領取三組帳號的活動獎勵。</li>
+                    <li class="warn-item">每隻欲領獎的遊戲帳號，皆需個別對應分享兩篇社團貼文，不可重複計算。</li>
+                    <li class="warn-item">請務必確保分享之貼文權限設定為「公開」且路徑正確，否則經審核人員查證將視同無效參與。</li>
+                    <li class="warn-item">本活動營運團隊保留最終變更、修改及終止本活動內容之權利。</li>
+                </ul>
+            </div>
+
+            <div class="link-block">
+                <a href="https://www.facebook.com/share/p/1GsSCXtwJf/" target="_blank" class="btn-share">
+                    🔗 前往 Facebook 官方活動貼文
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 W YONG ONLINE. 營運團隊所有。</p>
+    </footer>
+
+</body>
+</html>

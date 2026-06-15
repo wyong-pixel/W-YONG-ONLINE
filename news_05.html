@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【公告】《W勇》遊戲規章與社群使用規範｜W勇Online</title>
+    <style>
+        /* --- 全局樣式：低飽和高級冷灰風格 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c0e; /* 極暗冷黑底色 */
+            color: #b2b9c4; /* 低飽和冷灰文字 */
+            line-height: 1.8;
+            padding-top: 80px; /* 預留給固定導覽列的空間 */
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- 導覽列基底 --- */
+        header {
+            background: rgba(14, 16, 20, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1f2229;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px; 
+            height: 60px; 
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 150px;
+            cursor: pointer;        
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;     
+            object-fit: contain;
+        }
+
+        .btn-back {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6c757d;
+            border: 1px solid #2d3139;
+            padding: 6px 16px;
+            border-radius: 4px;
+            background: rgba(20, 22, 26, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: #ffffff;
+            border-color: #4a505a;
+            background: rgba(30, 33, 40, 0.8);
+        }
+
+        /* --- 主要內容區包裝 --- */
+        .article-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 文章頭部資訊 */
+        .article-header {
+            border-bottom: 1px solid #1f2229;
+            padding-bottom: 20px;
+            margin-bottom: 35px;
+        }
+
+        .article-tag {
+            display: inline-block;
+            font-size: 12px;
+            padding: 4px 10px;
+            background: #1f242e; /* 官方規章採用深沉的冷藍灰標籤 */
+            color: #a2b4d2;
+            border-radius: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .article-date {
+            font-size: 13px;
+            color: #495057;
+        }
+
+        /* --- 規章專用內容排版 --- */
+        .rule-intro {
+            font-size: 15px;
+            color: #ced4da;
+            margin-bottom: 35px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.01);
+            border-left: 3px solid #4a505a;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .rule-section {
+            background: #111317;
+            border: 1px solid #1f2229;
+            border-radius: 6px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1a1d24;
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 條款列表樣式 */
+        .clause-list {
+            list-style: none;
+        }
+
+        .clause-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 18px;
+            font-size: 14.5px;
+            color: #949ba6;
+            text-align: justify;
+        }
+
+        .clause-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 條款編號樣式 */
+        .clause-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 600;
+            color: #ffffff;
+            font-family: monospace;
+        }
+
+        /* 嚴厲警告或重點字詞強調 */
+        .text-punish {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .text-focus {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* 行距與段落微調 */
+        p {
+            margin-bottom: 0px;
+        }
+
+        /* 頁底聲明 */
+        .rule-footer {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            font-size: 13px;
+            color: #495057;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 頁尾 --- */
+        footer {
+            background: #07080a;
+            border-top: 1px solid #15171c;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #3e444c;
+            margin-top: 80px;
+        }
+
+        /* 📱 手機 RWD 優化 */
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            .article-title { font-size: 22px; }
+            .rule-section { padding: 20px; }
+            .clause-item { padding-left: 25px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂端導覽列 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/2E12.png" alt="W勇 LOGO" class="logo-img">
+            </a>
+            <a href="index.html#news" class="btn-back">返回列表</a>
+        </div>
+    </header>
+
+    <!-- 主要規章內容 -->
+    <main class="article-container">
+        
+        <article class="article-header">
+            <span class="article-tag">官方公告</span>
+            <h1 class="article-title">📜 《W勇》遊戲規章與社群使用規範</h1>
+            <div class="article-date">最後修訂時間：2026-06-16</div>
+        </article>
+
+        <div class="article-content">
+            
+            <p class="rule-intro">
+                歡迎來到《W勇》！為維護優良的遊戲環境與玩家社群交流品質，營運團隊特制定以下服務規章。請所有先鋒學員共同遵守，攜手打造和諧、友善且公平的校園世界。
+            </p>
+
+            <!-- 一、總則 -->
+            <div class="rule-section">
+                <h2 class="section-title">一、總則</h2>
+                <ul class="clause-list">
+                    <li class="clause-item">
+                        <span class="clause-number">1.</span>
+                        本社群為【W勇】遊戲玩家專屬交流平台，旨在提供一個和諧、友善的互動環境。所有成員應共同遵守並維護社群秩序與氛圍。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">2.</span>
+                        加入本社群即視為已詳閱並同意遵守本規範所有條款。任何違反行為將依情節輕重，由管理團隊予以<span class="text-focus">警告</span>、<span class="text-focus">限制發言權限</span>或<span class="text-punish">移除社群</span>。
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 二、行為準則 -->
+            <div class="rule-section">
+                <h2 class="section-title">二、行為準則</h2>
+                <ul class="clause-list">
+                    <li class="clause-item">
+                        <span class="clause-number">1.</span>
+                        嚴禁任何形式之人身攻擊、惡意誹謗、歧視言論、謾罵、挑釁、性騷擾，以及涉及政治、宗教等敏感議題之討論。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">2.</span>
+                        請保持社群對話之清晰與條理，避免洗版、過度使用表情符號或標點符號，以確保資訊傳達之有效性。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">3.</span>
+                        不得冒充管理團隊成員或偽造他人帳號，此類行為將導致<span class="text-punish">立即處分</span>。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">4.</span>
+                        尊重每位成員的發言權利，避免強行引導討論方向或進行無意義之爭辯。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">5.</span>
+                        嚴禁發表任何可能影響其他玩家遊戲體驗或社群氛圍之<span class="text-punish">退坑、退遊相關言論</span>。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">6.</span>
+                        任何經官方主觀判斷為<span class="text-punish">影響伺服器正常運營之言論</span>，該發言者將被<span class="text-punish">立即移除社群</span>。
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 三、頻道使用規範 -->
+            <div class="rule-section">
+                <h2 class="section-title">三、頻道使用規範</h2>
+                <ul class="clause-list">
+                    <li class="clause-item">
+                        <span class="clause-number">1.</span>
+                        各頻道均設有明確用途（例如：綜合討論、遊戲攻略、交易市集、問題回報等）。請成員務必依循頻道主題發言，違規者將視為擾亂秩序。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">2.</span>
+                        若有遊戲內物品交易、資源兌換、組隊招募等需求，請於指定頻道發布，並清楚標示相關資訊。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">3.</span>
+                        嚴禁在公開頻道發布任何個人隱私資訊，包括但不限於手機號碼、住址、帳號密碼等。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">4.</span>
+                        未經管理團隊明確許可，不得張貼任何形式之廣告、推廣連結或邀請碼。
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 四、帳號與資訊安全 -->
+            <div class="rule-section">
+                <h2 class="section-title">四、帳號與資訊安全</h2>
+                <ul class="clause-list">
+                    <li class="clause-item">
+                        <span class="clause-number">1.</span>
+                        嚴禁進行帳號買賣、共享、盜用，以及使用任何外掛程式或輔助工具，一經查證將<span class="text-punish">嚴懲不貸（永久封鎖）</span>。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">2.</span>
+                        若發現任何可疑訊息或詐騙行為，請立即截圖並向管理團隊回報，以便及時處理。
+                    </li>
+                    <li class="clause-item">
+                        <span class="clause-number">3.</span>
+                        為維護社群安全與公平性，管理團隊有權對涉嫌違法或破壞性行為之帳號進行<span class="text-focus">暫時停權審查</span>。
+                    </li>
+                </ul>
+            </div>
+
+            <div class="rule-footer">
+                <p>※ 營運團隊保留隨時修改、變更或終止本規章條款之最終權利。</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 W YONG ONLINE. 營運團隊所有。</p>
+    </footer>
+
+</body>
+</html>
