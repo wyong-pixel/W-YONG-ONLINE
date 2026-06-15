@@ -301,7 +301,7 @@
         }
         .news-date { color: #495057; font-size: 13px; }
 
-        /* --- 遊戲畫面展示牆 (已優化實體圖片樣式) --- */
+        /* --- 遊戲畫面展示牆 --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -317,16 +317,14 @@
             cursor: pointer;
         }
 
-        /* 🎯 實體圖片基本控制：預設呈現低飽和暗色、帶冷灰風格 */
         .gallery-img {
             width: 100%;
             height: 180px;
-            object-fit: cover; /* 裁切合適比例，防止圖片壓縮變形 */
-            filter: grayscale(40%) brightness(0.7); /* 暗部帶灰、低飽和 */
+            object-fit: cover; 
+            filter: grayscale(40%) brightness(0.7); 
             transition: filter 0.3s ease;
         }
 
-        /* 備用圖片加載失敗提示 */
         .gallery-img-placeholder {
             width: 100%;
             height: 180px;
@@ -357,14 +355,12 @@
             transition: color 0.3s ease;
         }
 
-        /* 🎯 當滑鼠移上卡片時的整體點亮特效 */
         .gallery-item:hover {
             transform: translateY(-4px);
             border-color: #6c757d;
             box-shadow: 0 4px 20px rgba(255, 255, 255, 0.03);
         }
 
-        /* 滑鼠移入：還原圖片飽和度並大幅提高亮度（呈現通透冷白皮高光） */
         .gallery-item:hover .gallery-img {
             filter: grayscale(0%) brightness(1.1); 
         }
@@ -406,7 +402,11 @@
             .section-container { padding: 40px 15px; }
             .tab-menu { gap: 5px; overflow-x: auto; white-space: nowrap; }
             .tab-btn { padding: 6px 12px; font-size: 13px; }
-            .news-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+            
+            /* 🎯 這裡修正了手機板標籤文字變直的問題 */
+            .news-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .news-tag { white-space: nowrap; display: inline-block; text-align: center; min-width: 45px; }
+            
             .news-date { align-self: flex-end; }
         }
     </style>
@@ -415,7 +415,6 @@
 
     <header>
         <div class="nav-container">
-            <!-- 點擊左上角 LOGO 會以平滑動畫拉回最上方的 #home (Hero 區塊) -->
             <a href="#home" class="logo-container">
                 <img src="images/2E12.png" alt="遊戲 LOGO" class="logo-img">
             </a>
@@ -427,10 +426,10 @@
                 </ul>
 
                 <div class="social-links">
-                    <a href="https://www.facebook.com/wyonggame/" target="_blank" title="Facebook 粉絲專頁" class="social-icon-btn">
+                    <a href="您的FB粉絲專頁網址" target="_blank" title="Facebook 粉絲專頁" class="social-icon-btn">
                         <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
                     </a>
-                    <a href="https://discord.gg/DWv6wZNgtH" target="_blank" title="Discord 官方社群" class="social-icon-btn">
+                    <a href="您的Discord邀請連結" target="_blank" title="Discord 官方社群" class="social-icon-btn">
                         <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.094 13.094 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.298 12.298 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"/></svg>
                     </a>
                 </div>
@@ -438,7 +437,6 @@
         </div>
     </header>
 
-    <!-- 頂端主頁畫面 -->
     <div class="hero" id="home">
         <h1>W勇 W YONG ONLINE</h1>
         <p>勇者無懼 突破自我 ・ 經典回憶 創新體驗</p>
@@ -487,41 +485,33 @@
         <ul class="news-list" id="news-container"></ul>
     </section>
 
-    <!-- ==================== 🎯 已正式更換為實體圖片的展示牆區塊 ==================== -->
     <section class="section-container" id="gallery">
         <h2 class="section-title">遊戲畫面 GALLERY</h2>
         <div class="gallery-grid">
             
-            <!-- 遊戲畫面一 -->
             <div class="gallery-item" onclick="changePromoImage(1)">
-                <!-- 🎯 若圖片遺失或尚未放置，會自動執行 onerror 隱藏破圖、顯示備用文字 -->
                 <img src="images/game_01.jpg" alt="核心都市戰場" class="gallery-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="gallery-img-placeholder" style="display:none;">[ 圖片檔載入失敗 ]</div>
-                
                 <div class="gallery-info">
                     <h4>核心都市戰場</h4>
                     <p>經典高畫質場景重現</p>
                 </div>
             </div>
 
-            <!-- 遊戲畫面二 -->
             <div class="gallery-item" onclick="changePromoImage(2)">
                 <img src="images/game_02.jpg" alt="職業技能展示" class="gallery-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="gallery-img-placeholder" style="display:none;">[ 圖片檔載入失敗 ]</div>
-                
                 <div class="gallery-info">
                     <h4>職業技能展示</h4>
                     <p>炫目技能與冷白皮光感特效</p>
                 </div>
             </div>
 
-            <!-- 遊戲畫面三 -->
             <div class="gallery-item" onclick="changePromoImage(3)">
                 <img src="images/game_03.jpg" alt="王怪挑戰副本" class="gallery-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="gallery-img-placeholder" style="display:none;">[ 圖片檔載入失敗 ]</div>
-                
                 <div class="gallery-info">
-                    <h4>王怪挑戰地圖</h4>
+                    <h4>王怪挑戰副本</h4>
                     <p>組織團隊展開極限對決</p>
                 </div>
             </div>
@@ -534,7 +524,6 @@
     </footer>
 
     <script>
-        // --- 1. 影片背景音量控制 ---
         let isMuted = true;
         function toggleVolume() {
             const iframe = document.getElementById('bg-player');
@@ -550,7 +539,6 @@
             }
         }
 
-        // --- 2. 新聞公告系統資料 ---
         const newsData = [
             { type: 'notice', typeName: '公告', title: '伺服器硬體防禦升級與線路優化調整完成', date: '2026-06-14', url: 'news_01.html' },
             { type: 'event', typeName: '活動', title: '【限時】暗夜爭霸戰：挑戰核心區域獲取珍稀時裝', date: '2026-06-12', url: 'https://forum.example.com/post/123' },
@@ -585,22 +573,17 @@
         }
         renderNews('all');
 
-        // --- 3. 自動追蹤畫面捲動（內含最底部觸底修正與首頁判定） ---
         const sections = document.querySelectorAll('.section-container');
         const navLinks = document.querySelectorAll('.nav-link');
 
         window.addEventListener('scroll', () => {
             let currentSectionId = '';
-            
-            // A. 優先檢查是否滾動到最底部
             if ((window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 30) {
                 currentSectionId = 'gallery';
             } 
-            // B. 檢查是否回到網頁最頂端（主頁畫面）
             else if (window.pageYOffset < 200) {
-                currentSectionId = 'home'; // 設為首頁 ID，此時導覽列的所有分頁都會恢復不亮狀態
+                currentSectionId = 'home'; 
             }
-            // C. 一般捲動狀態下的定位偵測
             else {
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
@@ -610,7 +593,6 @@
                 });
             }
 
-            // 更新導覽列對應的亮起狀態
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${currentSectionId}`) {
@@ -619,7 +601,6 @@
             });
         });
 
-        // --- 4. 點擊圖片卡片擴充函式 ---
         function changePromoImage(id) {
             console.log(`點擊了第 ${id} 張遊戲展示圖。`);
         }
